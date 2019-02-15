@@ -5,8 +5,8 @@ class Sitemap_Stylesheet extends Typecho_Widget implements Widget_Interface_Do
     {
         $options = Typecho_Widget::widget('Widget_Options');
         ob_start();
-        header("Content-Type: application/xml");
-        echo '<?xml version="1.0" encoding="UTF-8" ?>';
+        header("Content-Type: text/xsl");
+        echo '<?xml version="1.0" encoding="UTF-8" ?>', "\n";
 ?>
 <xsl:stylesheet version="2.0"
 				xmlns:html="http://www.w3.org/TR/REC-html40"
@@ -66,7 +66,7 @@ class Sitemap_Stylesheet extends Typecho_Widget implements Widget_Interface_Do
 							<th>URL</th>
 							<th>Priority</th>
 							<th>Change Frequency</th>
-							<th>Last Modify</th>
+							<th>Last Modification</th>
 						</tr>
 						<xsl:variable name="lower" select="'abcdefghijklmnopqrstuvwxyz'"/>
 						<xsl:variable name="upper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
