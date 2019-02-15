@@ -17,10 +17,12 @@ class Sitemap_Plugin implements Typecho_Plugin_Interface
      * @return void
      * @throws Typecho_Plugin_Exception
      */
-    public static function activate(){
-	    Helper::addRoute('sitemap', '/sitemap.xml', 'Sitemap_Action', 'action');
+    public static function activate()
+    {
+        Helper::addRoute('sitemap', '/sitemap.xml', 'Sitemap_Action', 'action');
+        Helper::addRoute('sitemap_stylesheet', '/sitemap.xsl', 'Sitemap_Stylesheet', 'action');
     }
-    
+
     /**
      * 禁用插件方法,如果禁用失败,直接抛出异常
      * 
@@ -29,10 +31,12 @@ class Sitemap_Plugin implements Typecho_Plugin_Interface
      * @return void
      * @throws Typecho_Plugin_Exception
      */
-    public static function deactivate(){
-	    Helper::removeRoute('sitemap');
+    public static function deactivate()
+    {
+        Helper::removeRoute('sitemap');
+        Helper::removeRoute('sitemap_stylesheet');
     }
-    
+
     /**
      * 获取插件配置面板
      * 
@@ -40,8 +44,10 @@ class Sitemap_Plugin implements Typecho_Plugin_Interface
      * @param Typecho_Widget_Helper_Form $form 配置面板
      * @return void
      */
-    public static function config(Typecho_Widget_Helper_Form $form){}
-    
+    public static function config(Typecho_Widget_Helper_Form $form)
+    {
+    }
+
     /**
      * 个人用户的配置面板
      * 
@@ -49,6 +55,8 @@ class Sitemap_Plugin implements Typecho_Plugin_Interface
      * @param Typecho_Widget_Helper_Form $form
      * @return void
      */
-    public static function personalConfig(Typecho_Widget_Helper_Form $form){}
+    public static function personalConfig(Typecho_Widget_Helper_Form $form)
+    {
+    }
 
 }

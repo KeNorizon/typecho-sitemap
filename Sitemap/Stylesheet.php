@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?php
+class Sitemap_Stylesheet extends Typecho_Widget implements Widget_Interface_Do
+{
+    public function action()
+    {
+        $options = Typecho_Widget::widget('Widget_Options');
+        ob_start();
+        header("Content-Type: application/xml");
+        echo '<?xml version="1.0" encoding="UTF-8" ?>';
+?>
 <xsl:stylesheet version="2.0"
 				xmlns:html="http://www.w3.org/TR/REC-html40"
 				xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -50,21 +59,21 @@
 				</style>
 			</head>
 			<body>
-				<h1>XML Sitemap</h1>				
+				<h1>XML Sitemap - <?php $options->title(); ?></h1>				
 				<div id="content">
 					<table cellpadding="5">
 						<tr style="border-bottom:1px black solid;">
 							<th>URL</th>
 							<th>Priority</th>
 							<th>Change Frequency</th>
-							<th>LastChange</th>
+							<th>Last Modify</th>
 						</tr>
 						<xsl:variable name="lower" select="'abcdefghijklmnopqrstuvwxyz'"/>
 						<xsl:variable name="upper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
 						<xsl:for-each select="sitemap:urlset/sitemap:url">
 						<tr>
 							<xsl:if test="position() mod 2 != 0">
-								<xsl:attribute  name="class">ood</xsl:attribute>
+								<xsl:attribute  name="class">odd</xsl:attribute>
 							</xsl:if>
 							<xsl:if test="position() mod 2 != 1">
 								<xsl:attribute  name="class">even</xsl:attribute>
@@ -91,9 +100,12 @@
 					</table>
 				</div>
 				<div id="footer">
-					<a href="https://www.bayun.org" target="_blank">八云酱</a>
+					<a href="<?php $options->index(); ?>" target="_blank" rel="noopener"><?php $options->title(); ?></a>
 				</div>
 			</body>
 		</html>
 	</xsl:template>
 </xsl:stylesheet>
+<?php
+    }
+}
