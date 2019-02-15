@@ -173,7 +173,7 @@ class Sitemap_Action extends Typecho_Widget implements Widget_Interface_Do
 	
 		// Output
 		ob_start();
-		header("Content-Type: text/xsl");
+		header("Content-Type: application/xml");
 
 		echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 		echo "<?xml-stylesheet type=\"text/xsl\" href=\"" . $this->options->index . "/sitemap.xsl\"?>\n";
