@@ -63,7 +63,7 @@ class Sitemap_Action extends Typecho_Widget implements Widget_Interface_Do
 
 	private function outputIndex()
 	{
-		self::outputItem($this->options->index, $this->finalModifyTime, 'daily', '0.5');
+		self::outputItem($this->options->siteUrl, $this->finalModifyTime, 'daily', '0.5');
 	}
 
 	private function outputPost($articles)
@@ -173,7 +173,7 @@ class Sitemap_Action extends Typecho_Widget implements Widget_Interface_Do
 	
 		// Output
 		ob_start();
-		header("Content-Type: application/xml");
+		header("Content-Type: text/xsl");
 
 		echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 		echo "<?xml-stylesheet type=\"text/xsl\" href=\"" . $this->options->index . "/sitemap.xsl\"?>\n";
